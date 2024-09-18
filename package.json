@@ -1,7 +1,7 @@
 {
-  "name": "dropdown-template",
-  "version": "1.0.0",
-  "description": "A template for general things",
+  "name": "Battleship",
+  "version": "0.0.1",
+  "description": "A battleship project",
   "private": true,
   "scripts": {
     "test": "jest",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/rib9985/battleship"
   },
   "keywords": [],
   "author": "",

@@ -1,9 +1,11 @@
+import Ship from "./Ship";
+
 export default class Gameboard {
-  constructor(x = 9, y = 9, computer = false, isVertical = false) {
+  constructor(x = 9, y = 9, isVertical = false) {
     this.boardSize = [x, y];
     this.x = this.generateArray(x);
     this.y = this.generateArray(y);
-    this.computer = computer;
+    this.ships = this.shipFleet();
     this.isVerticalPlace = isVertical;
   }
 
@@ -44,14 +46,39 @@ export default class Gameboard {
     }
   }
 
-  avaliableShipsToPlace() {
-    const ships = [
-      "carrier",
-      "battleship",
-      "cruiser",
-      "submarine",
-      "destroyer",
+  shipFleet() {
+    const carrier = new Ship("carrier", 4);
+    const battleship = new Ship("battleship", 3);
+    const cruiser = new Ship("cruiser", 2);
+    const submarine = new Ship("submarine", 1);
+
+    const fleet = [
+      carrier,
+      battleship,
+      battleship,
+      cruiser,
+      cruiser,
+      cruiser,
+      submarine,
+      submarine,
+      submarine,
+      submarine,
     ];
+
+    return fleet;
+  }
+
+  getShip(ship) {
+    let shipReturn = null;
+    const shipFound = this.ships.find((element) => {
+      element.shipClass == ship;
+    });
+    if (shipFound) {
+      shipReturn = shipFound;
+      const index = this.ships.indexOf(ship);
+      this.ships[index] = 0;
+    }
+    return shipReturn;
   }
 
   placeShip(ship) {
@@ -61,5 +88,33 @@ export default class Gameboard {
     } else {
       placeAt = x;
     }
+  }
+
+  receiveAttack(x, y) {
+    if (x < 0 || y < 0 || x > this.boardSize[0] || y > this.boardSize[1]) {
+      return null;
+    }
+    if (checkCoordsForHit(x, y)) {
+      hitShip();
+    }
+  }
+
+  checkCoordsForHit(x, y) {
+    if (this.x[x] && this.y[y] == 1) {
+      return null;
+    }
+    if (this.x[x] && this.y[y] == 0) {
+      this.markPosition(x, y);
+      return null;
+    }
+    if (this.x[x] && this.y[y] == typeof Object) {
+      this.markAsHit(x, y);
+      return true;
+    }
+  }
+
+  markPosition(x, y) {
+    this.x[x] = 1;
+    this.y[y] = 1;
   }
 }

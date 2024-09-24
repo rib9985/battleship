@@ -1,23 +1,20 @@
 import Ship from "./Ship";
 
 export default class Gameboard {
-  constructor(x = 9, y = 9, isVertical = false) {
-    this.boardSize = [x, y];
-    this.x = this.generateArray(x);
-    this.y = this.generateArray(y);
+  constructor(rows = 10, columns = 10, isVertical = false) {
+    this.boardSize = [rows, columns];
+    this.board = this.generateBoardArray(rows, columns);
     this.ships = this.shipFleet();
     this.isVerticalPlace = isVertical;
   }
 
-  generateArray(size) {
-    const array = new Array(size);
-    array.fill(0);
-    return array;
+  generateBoardArray(rows, columns) {
+    return Array.from({ length: rows }, () => new Array(columns).fill(0));
   }
 
   resetBoard() {
-    this.x = this.generateArray(this.boardSize[0]);
-    this.y = this.generateArray(this.boardSize[1]);
+    this.board = this.generateBoardArray(this.boardSize[0], this.boardSize[1]);
+    this.ships = this.shipFleet();
   }
 
   checkWithinBoundsX(shipLength) {
@@ -38,8 +35,11 @@ export default class Gameboard {
     }
   }
 
-  checkIfPositionEmpty(x, y) {
-    if (this.x[x] == 0 || this.y[y] == 0) {
+  checkIfPositionEmpty(row, column) {
+    if (row > 9 || column > 9 || row < 0 || column < 0) {
+      throw new Error("Row/Column out of bounds");
+    }
+    if (this.board[row][column] == 0) {
       return true;
     } else {
       return false;

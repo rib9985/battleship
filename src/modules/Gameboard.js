@@ -127,15 +127,6 @@ export default class Gameboard {
     this.placedShips.push(...placed);
   }
 
-  moveToSunk(ship) {
-    const index = this.placedShips.findIndex(
-      (s) => s.shipClass === ship.shipClass,
-    );
-
-    const sunk = this.availableShips.splice(index, 1);
-    this.sunkShips.push(...sunk);
-  }
-
   receiveAttack(row, column) {
     const hitCheck = this.checkForHit(row, column);
     if (hitCheck == false) {
@@ -159,6 +150,15 @@ export default class Gameboard {
     if (ship.isSunk()) {
       this.moveToSunk(ship);
     }
+  }
+
+  moveToSunk(ship) {
+    const index = this.placedShips.findIndex(
+      (s) => s.shipClass === ship.shipClass,
+    );
+
+    const sunk = this.placedShips.splice(index, 1);
+    this.sunkShips.push(...sunk);
   }
 
   checkForHit(row, column) {

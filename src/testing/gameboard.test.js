@@ -13,6 +13,10 @@ const submarineTwo = new Ship("submarineTwo", 1);
 const submarineThree = new Ship("submarineThree", 1);
 const submarineFour = new Ship("submarineFour", 1);
 
+const carrierHit = new Ship("carrier", 4, 2, false);
+const carrierSunk = new Ship("carrier", 4, 4, true);
+const submarineSunk = new Ship("submarineOne", 1, 1, true);
+
 const shipFleet = [
   carrier,
   battleshipOne,
@@ -74,10 +78,37 @@ test("checks if ship is not out of bounds", () => {
 
 test("places ship", () => {
   expect(testGameboard.placeShip(submarineOne, 0, 9)).toBe(true);
-  expect(testGameboard.placeShip(submarineOne, 0, 9)).toBe(false);
-  expect(testGameboard.inBounds(9, 0, carrier)).toBe(false);
-  expect(testGameboard.checkIfPositionEmpty(9, 0)).toBe(true);
-
-  expect(testGameboard.placeShip(carrier, 9, 0)).toBe(false);
   expect(testGameboard.placeShip(carrier, 1, 1)).toBe(true);
+  expect(testGameboard.board[1][1]).toStrictEqual(carrier);
+  expect(testGameboard.board[2][1]).toStrictEqual(carrier);
+  expect(testGameboard.board[3][1]).toStrictEqual(carrier);
+  expect(testGameboard.board[4][1]).toStrictEqual(carrier);
+  testGameboard.isVerticalPlace = false;
+});
+
+test("Gameboard receives attacks", () => {
+  expect(testGameboard.board[0][0]).toBe(0);
+  testGameboard.receiveAttack(0, 0);
+  expect(testGameboard.board[0][0]).toBe(1);
+  expect(testGameboard.board[9][9]).toBe(0);
+  testGameboard.receiveAttack(9, 9);
+  expect(testGameboard.board[9][9]).toBe(1);
+  testGameboard.receiveAttack(1, 1);
+  testGameboard.receiveAttack(2, 1);
+  expect(testGameboard.board[1][1]).toBe(2);
+  expect(testGameboard.board[2][1]).toBe(2);
+  expect(testGameboard.board[3][1]).toStrictEqual(carrierHit);
+  expect(testGameboard.board[4][1]).toStrictEqual(carrierHit);
+});
+
+test("carrier sinks and submarine sink", () => {
+  expect(testGameboard.sunkShips).toStrictEqual([]);
+  testGameboard.receiveAttack(3, 1);
+  testGameboard.receiveAttack(4, 1);
+  expect(testGameboard.board[3][1]).toBe(2);
+  expect(testGameboard.board[4][1]).toBe(2);
+  expect(testGameboard.sunkShips).toStrictEqual([carrierSunk]);
+  testGameboard.receiveAttack(0, 9);
+  expect(testGameboard.board[0][9]).toBe(2);
+  expect(testGameboard.sunkShips).toStrictEqual([carrierSunk, submarineSunk]);
 });

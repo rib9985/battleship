@@ -71,3 +71,13 @@ test("checks if ship is not out of bounds", () => {
   expect(testGameboard.inBounds(9, 0, carrier)).toBe(false);
   expect(testGameboard.inBounds(0, 9, carrier)).toBe(true);
 });
+
+test("places ship", () => {
+  expect(testGameboard.placeShip(submarineOne, 0, 9)).toBe(true);
+  expect(testGameboard.placeShip(submarineOne, 0, 9)).toBe(false);
+  expect(testGameboard.inBounds(9, 0, carrier)).toBe(false);
+  expect(testGameboard.checkIfPositionEmpty(9, 0)).toBe(true);
+
+  expect(testGameboard.placeShip(carrier, 9, 0)).toBe(false);
+  expect(testGameboard.placeShip(carrier, 1, 1)).toBe(true);
+});

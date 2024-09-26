@@ -80,12 +80,25 @@ export default class Gameboard {
   }
 
   placeShip(ship, row, column) {
-    const isEmpty = this.checkIfPositionEmpty(row, column);
-    const inBounds = this.inBounds(row, column, ship);
-    if (isEmpty && inBounds) {
-      this.removeFromFleet(ship);
-      this.updateBoardWithShip(ship, row, column);
-      return true;
+    let shipObject;
+    if (typeof ship === "string") {
+      shipObject = this.availableShips.find((s) => s.shipClass === ship);
+    } else {
+      shipObject = this.availableShips.find(
+        (s) => s.shipClass === ship.shipClass,
+      );
+    }
+
+    if (shipObject) {
+      const isEmpty = this.checkIfPositionEmpty(row, column);
+      const inBounds = this.inBounds(row, column, shipObject);
+      if (isEmpty == true && inBounds == true) {
+        this.removeFromFleet(shipObject);
+        this.updateBoardWithShip(shipObject, row, column);
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -107,15 +120,20 @@ export default class Gameboard {
   }
 
   removeFromFleet(ship) {
-    const index = this.availableShips.indexOf(ship);
+    const index = this.availableShips.findIndex(
+      (s) => s.shipClass === ship.shipClass,
+    );
     const placed = this.availableShips.splice(index, 1);
-    this.placedShips.push(placed);
+    this.placedShips.push(...placed);
   }
 
   moveToSunk(ship) {
-    const index = this.placedShips.indexOf(ship);
+    const index = this.placedShips.findIndex(
+      (s) => s.shipClass === ship.shipClass,
+    );
+
     const sunk = this.availableShips.splice(index, 1);
-    this.sunkShips.push(sunk);
+    this.sunkShips.push(...sunk);
   }
 
   receiveAttack(row, column) {

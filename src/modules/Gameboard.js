@@ -14,6 +14,7 @@ export default class Gameboard {
     return Array.from({ length: rows }, () => new Array(columns).fill(0));
   }
 
+  //Total of 10 ships
   shipFleet() {
     const carrier = new Ship("carrier", 4);
     const battleshipOne = new Ship("battleshipOne", 3);
@@ -131,10 +132,12 @@ export default class Gameboard {
     const hitCheck = this.checkForHit(row, column);
     if (hitCheck == false) {
       this.markPosition(row, column);
+      return false;
     }
     if (typeof hitCheck == "object") {
       this.shipWasHit(hitCheck);
       this.markHit(row, column);
+      return true;
     }
     if (hitCheck == null) {
       return null;
@@ -171,6 +174,14 @@ export default class Gameboard {
     if (typeof this.board[row][column] == "object") {
       const ship = this.board[row][column];
       return ship;
+    }
+  }
+
+  checkIfAllSunk() {
+    if (this.sunkShips.length == 10) {
+      return true;
+    } else {
+      return false;
     }
   }
 

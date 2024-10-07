@@ -7,8 +7,8 @@ export default function main() {
 function startGame() {}
 
 function instatiatePlayer(playerName) {
-  const playerOne = new Player(`${playerName}`, false);
-  return playerOne;
+  const player = new Player(`${playerName}`, false);
+  return player;
 }
 
 const playerOne = instatiatePlayer(playerOne);

@@ -1,0 +1,34 @@
+/* Custom imports */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+
+/* Custom colors */
+:root {
+	--background-color: #182547;
+	--main-color: #0367A6;
+	--main-color-medium: #66A3D9;
+	--main-color-light: #B3Cff2;
+	--main-color-lighter: #c9dff2;
+	--hit-color: #8e0000;
+	--hit-color-lighter: #c9dff2;
+
+	--title-font: 'Source Sans 3';
+}
+
+/**/
+
+body {
+	padding: 5%;
+	min-width: 110vw;
+	min-height: 110vh;
+	margin-top: 10%;
+	gap: 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--background-color);
+	font-family: var(--title-font)
+}

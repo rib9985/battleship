@@ -21,149 +21,177 @@
     <div id="boardOptions">
       <label for="verticalPlace">Vertical Place?</label>
       <input type="checkbox" name="verticalPlace" value="">
+      <button id='randomiseButton' type="submit">Random ships!</button>
+      <button id="resetButton" type="">Reset Board</button>
     </div>
 
-    <div id='columnNames'>ABCDEFGHIJ</div>
-    <div id='rowNames'>12345678910</div>
     <div id="gameboard">
-      <div class="row-0">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
+      <div id='columnNames'>
+        <div class="coordsLabel">X→<br>
+          Y↓
+        </div>
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+        <div>E</div>
+        <div>F</div>
+        <div>G</div>
+        <div>H</div>
+        <div>I</div>
+        <div>J</div>
       </div>
-      <div class="row-1">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
+      <div id='rowNames'>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
       </div>
-      <div class="row-2">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-3">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-4">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-5">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-6">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-7">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-8">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
-      </div>
-      <div class="row-9">
-        <div class="column-0"></div>
-        <div class="column-1"></div>
-        <div class="column-2"></div>
-        <div class="column-3"></div>
-        <div class="column-4"></div>
-        <div class="column-5"></div>
-        <div class="column-6"></div>
-        <div class="column-7"></div>
-        <div class="column-8"></div>
-        <div class="column-9"></div>
+      <div id='gameboardGrid'>
+        <div class="column-0 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-1 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-2 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-3 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-4 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-5 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-6 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-7 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-8 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
+        <div class="column-9 column">
+          <div class="row-0"></div>
+          <div class="row-1"></div>
+          <div class="row-2"></div>
+          <div class="row-3"></div>
+          <div class="row-4"></div>
+          <div class="row-5"></div>
+          <div class="row-6"></div>
+          <div class="row-7"></div>
+          <div class="row-8"></div>
+          <div class="row-9"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="gameControls">
-    <button id="resetButton" type="">Reset Board</button>
+  <div id="gameOptions">
+    <h3 id="opponentText">Choose your Opponent</h3>
     <form id="opponentForm">
       <input type="radio" id="rival" name="fav_language" value="Rival">
       <label for="rival">Rival</label>
       <input type="radio" id="human" name="fav_language" value="Human">
       <label for="human">Human</label>
     </form>
-    <button id='randomiseButton' type="submit">Random ships!</button>
+    <div>
+      <button type="submit" id='startButton' form="opponentForm"> Start! </button>
+    </div>
   </div>
 
 
-  <div>
-    <button type="submit" id='startButton' form="opponentForm"> Start! </button>
-  </div>
 
 </body>
 

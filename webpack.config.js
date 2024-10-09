@@ -9,6 +9,7 @@ module.exports = {
   },
   devServer: {
     static: "./dist/",
+    hot: true,
   },
   devtool: "inline-source-map",
   plugins: [

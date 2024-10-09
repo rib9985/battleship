@@ -16,149 +16,155 @@
     <h2 class="actionTitle">Place your Ships</h2>
   </div>
 
-  <div id="boardOptions">
-    <div class="shipPlaceType">Vertical Place</div>
-    <div class="shipPlaceType">
-      Rival?
-      <div class="">AI</div>
-      <div class="">Human</div>
-    </div>
-  </div>
 
-  <div id="gridContainer">
-    <div class="row-0">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
+  <div id="boardContainer">
+    <div id="boardOptions">
+      <label for="verticalPlace">Vertical Place?</label>
+      <input type="checkbox" name="verticalPlace" value="">
     </div>
-    <div class="row-1">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-2">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-3">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-4">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-5">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-6">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-7">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-8">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
-    </div>
-    <div class="row-9">
-      <div class="column-0"></div>
-      <div class="column-1"></div>
-      <div class="column-2"></div>
-      <div class="column-3"></div>
-      <div class="column-4"></div>
-      <div class="column-5"></div>
-      <div class="column-6"></div>
-      <div class="column-7"></div>
-      <div class="column-8"></div>
-      <div class="column-9"></div>
+
+    <div id='columnNames'>ABCDEFGHIJ</div>
+    <div id='rowNames'>12345678910</div>
+    <div id="gameboard">
+      <div class="row-0">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-1">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-2">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-3">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-4">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-5">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-6">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-7">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-8">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
+      <div class="row-9">
+        <div class="column-0"></div>
+        <div class="column-1"></div>
+        <div class="column-2"></div>
+        <div class="column-3"></div>
+        <div class="column-4"></div>
+        <div class="column-5"></div>
+        <div class="column-6"></div>
+        <div class="column-7"></div>
+        <div class="column-8"></div>
+        <div class="column-9"></div>
+      </div>
     </div>
   </div>
 
   <div id="gameControls">
-    <div id="resetBoard">
-      Reset Board
-    </div>
-    <div id="startGame">
-      Start Game
-    </div>
-    <div id="randomiseButton">
-      Randomise
-    </div>
+    <button id="resetButton" type="">Reset Board</button>
+    <form id="opponentForm">
+      <input type="radio" id="rival" name="fav_language" value="Rival">
+      <label for="rival">Rival</label>
+      <input type="radio" id="human" name="fav_language" value="Human">
+      <label for="human">Human</label>
+    </form>
+    <button id='randomiseButton' type="submit">Random ships!</button>
   </div>
+
+
+  <div>
+    <button type="submit" id='startButton' form="opponentForm"> Start! </button>
+  </div>
+
 </body>
 
 </html>

@@ -11,19 +11,18 @@
 	--main-color-light: #B3Cff2;
 	--main-color-lighter: #c9dff2;
 	--hit-color: #8e0000;
-	--hit-color-lighter: #c9dff2;
+	--hit-color-lighter: #f2505D;
 	--title-font: 'Source Sans 3';
 }
 
 /**/
 
 body {
-	padding: 5%;
-	min-width: 50vw;
 	max-width: 100vw;
 	max-height: 100vh;
-	min-height: 50vh;
+	padding: 5%;
 	margin-top: 10%;
+	margin: 0;
 	gap: 60px;
 	display: flex;
 	flex-direction: column;
@@ -33,17 +32,73 @@ body {
 	font-family: var(--title-font)
 }
 
+#header {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px;
+}
+
+
 h1 {
 	font-family: var(--title-font);
 	font-weight: 900;
 	color: var(--main-color-lighter);
-	font-size: 4vw;
+	font-size: 2vw;
+	text-align: center;
+	padding: 0;
+	margin: 0
 }
 
 
 h2 {
 	font-family: var(--title-font);
-	font-weight: 900;
+	font-weight: 700;
 	color: var(--main-color-light);
-	font-size: 2vw;
+	font-size: 1vw;
+	text-align: center;
+	padding: 0;
+	margin: 0
+}
+
+h3 {
+	font-weight: 600;
+	color: var(--main-color);
+	font-size: 1vw;
+}
+
+button {
+	border-radius: 20px;
+	border-style: none;
+	background-color: var(--hit-color-lighter);
+	padding: 15px;
+	font-family: var(--title-font);
+	font-size: 15px;
+	color: var(--main-color);
+}
+
+#boardContainer {
+	aspect-ratio: 1;
+	min-width: 30vw;
+	min-height: 30vw;
+}
+
+#gameboard {
+
+	aspect-ratio: 1;
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	min-width: 50vpw;
+	min-height: 50vpw;
+}
+
+#gameboard>*>* {
+	border-style: dashed;
+	aspect-ratio: 1;
+	border-color: var(--main-color-light);
+	border-spacing: 0px;
+	border-width: 0.5px;
 }

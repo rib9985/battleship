@@ -24,6 +24,10 @@
       <button id='randomiseButton' type="submit">Random ships!</button>
       <button id="resetButton" type="">Reset Board</button>
     </div>
+  </div>
+
+  <div id="boardAndShipsContainer">
+
 
     <div id="gameboard">
       <div id='columnNames'>
@@ -176,8 +180,57 @@
         </div>
       </div>
     </div>
-  </div>
 
+    <div id="avaliableShipsContainer">
+      <h2>Available Ships</h2>
+      <!--Carrier-->
+      <div class='shipContainer'>
+        <div class="shipInfo">
+          <div class="shipName">Carrier</div>
+        </div>
+        <div class='carrier' draggable="true" id='carrier'>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+        </div>
+        <div class="shipQuantity" id="carrierQuantity">x1</div>
+      </div>
+      <!--Battleships-->
+      <div class='shipContainer'>
+        <div class="shipInfo">
+          <div class="shipName">Battleship</div>
+        </div>
+        <div class='battleship' draggable="true" id='battleship'>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+        </div>
+        <div class="shipQuantity" id="battleshipQuantity">x2</div>
+      </div>
+      <!--Cruiser-->
+      <div class='shipContainer'>
+        <div class="shipInfo">
+          <div class="shipName">Cruiser</div>
+        </div>
+        <div class='cruiser' draggable="true" id='cruiser'>
+          <div class="shipCell"></div>
+          <div class="shipCell"></div>
+        </div>
+        <div class="shipQuantity" id="cruiserQuantity">x2</div>
+      </div>
+      <!--Submarine-->
+      <div class='shipContainer'>
+        <div class="shipInfo">
+          <div class="shipName">Submarine</div>
+        </div>
+        <div class='submarine' draggable="true" id='submarine'>
+          <div class="shipCell"></div>
+        </div>
+        <div class="shipQuantity" id="submarineQuantity">x2</div>
+      </div>
+    </div>
+  </div>
   <div id="gameOptions">
     <h3 id="opponentText">Choose your Opponent</h3>
     <form id="opponentForm">

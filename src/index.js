@@ -1,4 +1,5 @@
 import "./style.css";
-console.log("hello");
+import DomMethods from "./modules/Dom";
+import attachListeners from "./modules/Drag";
 
-console.log("testing");
+attachListeners();

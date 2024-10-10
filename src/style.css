@@ -104,15 +104,16 @@ button {
 .shipContainer {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
+	gap: 10px;
 	align-items: center;
-	justify-content: center;
+	: center;
 }
 
 .shipInfo {
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
+	gap: 2rem;
 	justify-content: center;
 	align-items: center;
 }
@@ -174,12 +175,12 @@ button {
 	grid-area: 1 / 1 / 2 / 2
 }
 
-#gameboardGrid>.column>* {
+.gameboardGrid>.column>div {
 	border: 0.5px dashed var(--main-color-light);
 	aspect-ratio: 1;
 }
 
-#gameboardGrid {
+.gameboardGrid {
 	grid-area: 2 / 2 / 12 / 12;
 	aspect-ratio: 1;
 	display: grid;
@@ -227,7 +228,7 @@ button {
 }
 
 
-#gameboardGrid>.column>*:hover {
+.gameboardGrid>.column>*:hover {
 	border: 0.5px dashed var(--hit-color-lighter);
 	background-color: var(--main-color);
 }

@@ -8,6 +8,7 @@
   <title>Battleship</title>
   <link href="style.css" rel="stylesheet">
   <script src="main.js" defer></script>
+
 </head>
 
 <body>
@@ -20,7 +21,7 @@
   <div id="boardContainer">
     <div id="boardOptions">
       <label for="verticalPlace">Vertical Place?</label>
-      <input type="checkbox" name="verticalPlace" value="">
+      <input type="checkbox" name="verticalPlace" value="" id="verticalPlace">
       <button id='randomiseButton' type="submit">Random ships!</button>
       <button id="resetButton" type="">Reset Board</button>
     </div>
@@ -57,7 +58,7 @@
         <div>9</div>
         <div>10</div>
       </div>
-      <div id='gameboardGrid'>
+      <div class="gameboardGrid" id='playerOneGrid'>
         <div class="column-0 column">
           <div class="row-0"></div>
           <div class="row-1"></div>
@@ -231,6 +232,7 @@
       </div>
     </div>
   </div>
+
   <div id="gameOptions">
     <h3 id="opponentText">Choose your Opponent</h3>
     <form id="opponentForm">
@@ -243,8 +245,6 @@
       <button type="submit" id='startButton' form="opponentForm"> Start! </button>
     </div>
   </div>
-
-
 
 </body>
 

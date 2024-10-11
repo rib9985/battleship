@@ -7,10 +7,6 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
   },
-  devServer: {
-    static: "./dist/",
-    hot: true,
-  },
   devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
@@ -18,6 +14,10 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+  devServer: {
+    static: "./dist/",
+    hot: false,
+  },
   module: {
     rules: [
       {

@@ -1,7 +1,7 @@
 import DomMethods from "./Dom";
 //TODO: create function to check quantities of the ship
-//TODO: create function to update quantities of the ship 
-//TODO: create function to reset board 
+//TODO: create function to update quantities of the ship
+//TODO: create function to reset board
 //FIX: are event listeners duped?
 //PERF: maybe refactor into a class to contain the functions better ?
 
@@ -27,6 +27,7 @@ function dragStart(event) {
   const shipId = event.target.id;
   const shipLength = event.target.children.length;
   event.dataTransfer.setData("text", JSON.stringify({ shipId, shipLength }));
+  event.dataTransfer.effectAllowed = "move";
 }
 
 function dragOver(event) {
@@ -34,15 +35,17 @@ function dragOver(event) {
 }
 
 function drop(event) {
-  event.preventDefault();
-
-  const data = JSON.parse(event.dataTransfer.getData("text"));
-  const shipId = data.shipId;
-  const shipLength = data.shipLength;
+  const data = event.dataTransfer.getData("text");
+  const dataJson = JSON.parse(data);
+  const shipId = dataJson.shipId;
+  const shipLength = dataJson.shipLength;
   const targetCell = event.target;
-  const isOccupied = checkCellOccupied(targetCell);
+  const isOccupied = DomMethods.checkCellOccupied(targetCell);
 
   if (isOccupied) {
+    return;
+  }
+  if (!checkIfQuantityValid(shipId)) {
     return;
   } else {
     const targetRow = targetCell.className;
@@ -50,30 +53,30 @@ function drop(event) {
 
     const rowNumber = parseInt(targetRow.split(" ")[0].split("-")[1]);
     const columnNumber = parseInt(targetColumn.split(" ")[0].split("-")[1]);
-    
-//TODO: add setShip function here
-    if checkWithinBounds(rowNumber,columnNumber,shipLength){
 
+    if (checkWithinBounds(rowNumber, columnNumber, shipLength)) {
+      setShip(columnNumber, rowNumber, shipLength, shipId);
+      updateShipQuantity(shipId);
     }
-
   }
-  console.log(targetRow);
-  console.log(targetColumn);
 }
 
 function checkWithinBounds(posRow, posColumn, shipLength) {
-  const isVertical = getIsVertical();
+  let posCheck = posColumn;
+  const isVertical = isVerticalPlace();
   if (isVertical) {
-    posCheck = posColumn;
-  } else {
     posCheck = posRow;
   }
-  if (posCheck + shipLength <= 10) {
+  const finalOccupyLength = posCheck + shipLength;
+  if (finalOccupyLength <= 10) {
     for (let index = 0; index < shipLength; index++) {
-      let cell = isVertical
-        ? DomMethods.getColumnRow(posColumn + index, posRow)
-        : DomMethods.getColumnRow(posColumn, posRow + index);
-      if (checkCellOccupied(cell)) {
+      let cell = null;
+      if (isVertical) {
+        cell = DomMethods.getColumnRow(posColumn, posRow + index);
+      } else {
+        cell = DomMethods.getColumnRow(posColumn + index, posRow);
+      }
+      if (DomMethods.checkCellOccupied(cell)) {
         return false;
       }
     }
@@ -83,32 +86,46 @@ function checkWithinBounds(posRow, posColumn, shipLength) {
   }
 }
 
-function getIsVertical() {
-  const checkbox = document.getElementById("verticalPlace");
-  if (checkbox.getAttribute("checked")) {
+function setShip(columnNumber, rowNumber, shipLength, shipId) {
+  if (isVerticalPlace()) {
+    for (let index = 0; index < shipLength; index++) {
+      let cell = DomMethods.getColumnRow(columnNumber, rowNumber + index);
+      DomMethods.setCellShip(cell, shipId);
+      DomMethods.setCellOccupied(cell);
+    }
+  } else {
+    for (let index = 0; index < shipLength; index++) {
+      let cell = DomMethods.getColumnRow(columnNumber + index, rowNumber);
+      DomMethods.setCellShip(cell, shipId);
+      DomMethods.setCellOccupied(cell);
+    }
+  }
+}
+
+function getShipQuantity(shipId) {
+  const shipQuantityDiv = DomMethods.getShipQuantityDiv(shipId);
+  const divText = shipQuantityDiv.innerText;
+  const quantity = parseInt(divText.split("")[1]);
+  return quantity;
+}
+
+function updateShipQuantity(shipId) {
+  const shipQuantity = getShipQuantity(shipId);
+  const currentNum = shipQuantity - 1;
+  DomMethods.setShipQuantityDiv(shipId, currentNum);
+}
+
+function checkIfQuantityValid(shipId) {
+  if (getShipQuantity(shipId) > 0) {
     return true;
   } else {
     return false;
   }
 }
 
-//TODO: create a function to set cells as occupied by ships, both in row/vertical
-
-function setShip(shipLength, shipId){
-
-
-
-}
-
-//TODO: create function to check quantities of the ship
-//TODO: create function to update quantities of the ship 
-//TODO: create function to reset board 
-function setCellOccupied(cell) {
-  cell.classList.add("occupied");
-}
-
-function checkCellOccupied(cell) {
-  if (cell.classList.contains("occupied")) {
+function isVerticalPlace() {
+  const checkbox = document.getElementById("verticalPlace");
+  if (checkbox.checked) {
     return true;
   } else {
     return false;

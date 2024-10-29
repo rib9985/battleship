@@ -1,8 +1,6 @@
 import DomMethods from "./Dom";
 //TODO: create function to check quantities of the ship
 //TODO: create function to update quantities of the ship
-//TODO: create function to reset board
-//FIX: are event listeners duped?
 //PERF: maybe refactor into a class to contain the functions better ?
 
 export default function attachListeners() {
@@ -104,6 +102,9 @@ function setShip(columnNumber, rowNumber, shipLength, shipId) {
 
 function getShipQuantity(shipId) {
   const shipQuantityDiv = DomMethods.getShipQuantityDiv(shipId);
+  if (shipQuantityDiv == null || shipQuantityDiv == 0) {
+    return 0;
+  }
   const divText = shipQuantityDiv.innerText;
   const quantity = parseInt(divText.split("")[1]);
   return quantity;

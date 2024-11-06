@@ -1,12 +1,6 @@
 import Player from "./Player";
 
-export default function main() {
-  startGame();
-}
-
-function startGame() {}
-
-function instatiatePlayer(playerName) {
+export default function instatiatePlayer(playerName) {
   const player = new Player(`${playerName}`, false);
   return player;
 }

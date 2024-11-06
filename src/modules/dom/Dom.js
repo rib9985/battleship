@@ -2,7 +2,8 @@
 //TODO: create method to call random placements
 //TODO: create method to call other player board
 //
-import randomiseShipPlace from "./RandomShips";
+//
+import randomShips from "./RandomShips.js";
 export default class DomMethods {
   static attachResetListener() {
     const resetButton = document.getElementById("resetButton");
@@ -11,7 +12,7 @@ export default class DomMethods {
 
   static attachRandomShipListener() {
     const randomiseButton = document.getElementById("randomiseButton");
-    randomiseButton.addEventListener("click", () => this.randomiseBoard());
+    randomiseButton.addEventListener("click", () => randomShips());
   }
 
   static resetGame() {

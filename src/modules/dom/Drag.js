@@ -1,8 +1,9 @@
-import DomMethods from "./Dom";
 //TODO: create function to check quantities of the ship
 //TODO: create function to update quantities of the ship
+
 //PERF: maybe refactor into a class to contain the functions better ?
 
+import default DomMethods from "./Dom.js";
 export default function attachListeners() {
   const ships = document.querySelectorAll(
     '.shipContainer > [draggable="true"]',

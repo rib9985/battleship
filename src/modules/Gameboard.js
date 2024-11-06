@@ -1,4 +1,5 @@
 import Ship from "./Ship";
+import RandomPlace from "./helpers/RandomPlace.js";
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10, isVertical = false) {
@@ -191,5 +192,21 @@ export default class Gameboard {
 
   markHit(row, column) {
     this.board[row][column] = 2;
+  }
+
+  placeShipsRandom() {
+    this.availableShips.forEach((ship) => {
+      let placed = false;
+
+      while (!placed) {
+        let randomCoords = getRandomPlace;
+        this.isVerticalPlace = randomCoords.verticalPlace;
+        placed = this.placeShip(
+          ship,
+          randomCoords.placeRow,
+          randomCoords.placeColumn,
+        );
+      }
+    });
   }
 }

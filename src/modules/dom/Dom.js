@@ -3,7 +3,7 @@
 //TODO: create method to call other player board
 //
 //
-import randomShips from "./RandomShips.js";
+import randomShips from "./RandomBoard.js";
 export default class DomMethods {
   static attachResetListener() {
     const resetButton = document.getElementById("resetButton");
@@ -12,7 +12,7 @@ export default class DomMethods {
 
   static attachRandomShipListener() {
     const randomiseButton = document.getElementById("randomiseButton");
-    randomiseButton.addEventListener("click", () => randomShips());
+    randomiseButton.addEventListener("click", () => this.randomiseBoardPlace());
   }
 
   static resetGame() {
@@ -98,7 +98,24 @@ export default class DomMethods {
     cruiser.innerHTML = `x${cruiserQuantity}`;
   }
 
-  static randomiseBoard() {
-    randomiseShipPlace();
+  static setCellInDom(ship, row, column) {
+    if (ship == 0) {
+      return;
+    } else {
+      const cellInDom = this.getColumnRow(column, row);
+      this.setCellOccupied(cellInDom);
+      this.setCellShip(cellInDom, ship.shipClass);
+    }
+  }
+
+  static randomiseBoardPlace() {
+    this.resetBoard();
+    const randomise = randomShips();
+    const randomBoard = randomise.board;
+    randomBoard.forEach((row, rowIndex) => {
+      row.forEach((cell, columnIndex) => {
+        this.setCellInDom(cell, rowIndex, columnIndex);
+      });
+    });
   }
 }

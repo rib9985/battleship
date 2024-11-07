@@ -1,5 +1,5 @@
 import Ship from "./Ship";
-import RandomPlace from "./helpers/RandomPlace.js";
+import getRandomPlace from "./helpers/RandomPlace.js";
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10, isVertical = false) {
@@ -195,18 +195,25 @@ export default class Gameboard {
   }
 
   placeShipsRandom() {
-    this.availableShips.forEach((ship) => {
+    const ships = [...this.availableShips];
+
+    ships.forEach((ship) => {
       let placed = false;
 
       while (!placed) {
-        let randomCoords = getRandomPlace;
-        this.isVerticalPlace = randomCoords.verticalPlace;
-        placed = this.placeShip(
-          ship,
-          randomCoords.placeRow,
-          randomCoords.placeColumn,
-        );
+        let randomCoords = getRandomPlace();
+        let row = randomCoords.placeRow;
+        let column = randomCoords.placeColumn;
+        let vertical = randomCoords.verticalPlace;
+        this.isVerticalPlace = vertical;
+        placed = this.placeShip(ship, row, column);
       }
+    });
+  }
+
+  getShipPositions() {
+    return this.board.filter((item) => {
+      item instanceof Ship;
     });
   }
 }

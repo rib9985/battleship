@@ -1,12 +1,10 @@
 import Gameboard from "../Gameboard";
-
-const tempBoard = new Gameboard();
-
 export default function randomShips() {
+  const tempBoard = new Gameboard();
   tempBoard.placeShipsRandom();
   const availableShips = tempBoard.availableShips;
   const placedShips = tempBoard.placedShips;
   const board = tempBoard.board;
 
-  return { board, ships, availableShips, placedShips };
+  return { availableShips, placedShips, board };
 }

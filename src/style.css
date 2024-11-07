@@ -275,3 +275,7 @@ button {
 .occupied-submarine {
 	background-color: lightgreen;
 }
+
+.occupied {
+	background-color: lightgreen;
+}

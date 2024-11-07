@@ -3,7 +3,7 @@
 
 //PERF: maybe refactor into a class to contain the functions better ?
 
-import default DomMethods from "./Dom.js";
+import DomMethods from "./Dom";
 export default function attachListeners() {
   const ships = document.querySelectorAll(
     '.shipContainer > [draggable="true"]',
